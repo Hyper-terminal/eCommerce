@@ -1,0 +1,17 @@
+.product__button {
+    background-color: #4c5175;
+    color: #e1e8ec;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.product__button:hover{
+    background-color: black;
+    color: #bce7d9;
+}
+
+.product_image{
+    height: 10rem;
+    width: 15rem;
+}

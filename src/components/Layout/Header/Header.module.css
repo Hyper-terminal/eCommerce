@@ -1,0 +1,24 @@
+.header {
+    background-color: #e1e8ec;
+}
+
+.header__link{
+    color: #4c5175;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.header__link:hover{
+    color: black;
+    transform :scale(1.1);
+}
+
+.header__summary {
+    background-color: #bce7d9;
+    text-align: center;
+    padding: 4rem;
+    font-weight: bold;
+    font-size: 6rem;
+    font-family: Metal Mania;
+}

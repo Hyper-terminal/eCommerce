@@ -1,11 +1,11 @@
 import React from "react";
-import { Card, Button, Container, Nav } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
   return (
     <Card
-      className="ms-2 me-2 h-100 shadow-lg border-0"
+      className="ms-2 me-2 h-100 shadow-lg  border-0"
       style={{ width: "18rem" }}
     >
       <Card.Body>

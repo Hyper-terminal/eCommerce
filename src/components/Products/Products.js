@@ -40,11 +40,11 @@ const productsArr = [
 const Products = () => {
   return (
     <>
-      <h3 className="text-center fw-bold fs-1 mt-4 mb-4">Music</h3>
+      <h3 style={{fontFamily: "Metal Mania"}} className="text-center fw-bold fs-1 mt-4 mb-4">Music</h3>
       <div className="d-flex justify-content-center w-75 m-auto">
         <Row sm={1} md={2} lg={3}>
           {productsArr.map((item) => (
-            <Col className="mb-2">
+            <Col className="mb-2 ">
               <ProductItem
                 title={item.title}
                 price={item.price}

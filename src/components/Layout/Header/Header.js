@@ -2,8 +2,10 @@ import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import classes from "./Header.module.css";
 import cartIcon from "../../../assets/icons/cart.svg";
+import logo from "../../../assets/logo/png/logo-no-background.png";
 
 const Header = (props) => {
+  
   const cartHandler = () => {
     props.onCartToggle();
   };
@@ -12,10 +14,10 @@ const Header = (props) => {
     <header>
       <Navbar
         expand="sm"
-        className={`${classes.header} shadow justify-content-between`}
+        className={`${classes.header} h-100 shadow justify-content-between`}
       >
-        <div>
-          <img alt="brand name the generics" />
+        <div >
+          <img className="ms-5" height="50" width="70" src={logo} alt="brand name the generics" />
         </div>
         <Nav className="ms-5">
           <Nav.Link className={classes.header__link}>Home</Nav.Link>

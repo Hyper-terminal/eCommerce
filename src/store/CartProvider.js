@@ -1,45 +1,24 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import CartContext from "./cart-context";
-
-const cartElements = [
-  {
-    title: "Colors",
-
-    price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-    quantity: 2,
-  },
-
-  {
-    title: "Black and white Colors",
-
-    price: 50,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-    quantity: 3,
-  },
-
-  {
-    title: "Yellow and Black Colors",
-
-    price: 70,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-    quantity: 1,
-  },
-];
+import CartReducer from "./CartReducer";
 
 const CartProvider = (props) => {
-  const [items, setItems] = useState(cartElements);
+  console.log("Provider");
+
+  const [cart, dispatchCart] = useReducer(CartReducer, {
+    items: [],
+    cartTotalAmount: 0,
+  });
+
+  const addCartHandler = (item) => {
+    dispatchCart({ type: "ADD_PRODUCTS", item: item });
+  };
 
   return (
     <CartContext.Provider
       value={{
-        items,
+        items: cart.items,
+        onAddToCart: addCartHandler,
       }}
     >
       {props.children}

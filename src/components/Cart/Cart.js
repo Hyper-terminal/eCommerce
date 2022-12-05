@@ -5,7 +5,6 @@ import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartCtx = useContext(CartContext);
-  console.log(cartCtx.items);
 
   return (
     <section className="h-100 text-center w-100 mt-3" id="cart">

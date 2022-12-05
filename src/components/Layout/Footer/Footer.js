@@ -7,7 +7,7 @@ import facebook from "../../../assets/icons/facebook.svg";
 const Footer = () => {
   return (
     <footer
-      className={`d-flex mt-4 flex-row align-items center justify-content-between p-5 shadow border ${classes.footer}`}
+      className={`d-flex w-100 mt-4 flex-row align-items-center justify-content-between p-5 shadow border ${classes.footer}`}
     >
       <h1>The Generics</h1>
       <div className="d-flex me-5">

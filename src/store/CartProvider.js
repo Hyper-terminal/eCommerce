@@ -3,8 +3,6 @@ import CartContext from "./cart-context";
 import CartReducer from "./CartReducer";
 
 const CartProvider = (props) => {
-    console.log("Provider");
-
     const [cart, dispatchCart] = useReducer(CartReducer, {
         items: [],
         cartTotalAmount: 0,

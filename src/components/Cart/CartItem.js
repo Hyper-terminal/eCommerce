@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Button } from "react-bootstrap";
+import CartContext from "../../store/cart-context";
 import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
+
+  const cartCtx = useContext(CartContext);
+
+  const removeFromCartHandler = () => {
+    cartCtx.onRemoveFromCart(props.id);
+  };
+
   return (
     <>
       <hr />
@@ -19,7 +27,9 @@ const CartItem = (props) => {
         </Col>
         <Col>
           <h3 className="fw-bold">${props.price}</h3>
-          <Button variant="danger">Remove</Button>
+          <Button onClick={removeFromCartHandler} variant="danger">
+            Remove
+          </Button>
         </Col>
       </Row>
     </>

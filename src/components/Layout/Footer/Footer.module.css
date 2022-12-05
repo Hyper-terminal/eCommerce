@@ -1,0 +1,12 @@
+.footer {
+  background-color: #e1e8ec;
+}
+
+.footer h1 {
+  font-family: Metal Mania;
+  font-size: 4rem;
+}
+
+.footer img {
+  cursor: pointer;
+}

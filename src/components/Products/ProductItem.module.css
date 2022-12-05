@@ -1,17 +1,27 @@
 .product__button {
-    background-color: #4c5175;
-    color: #e1e8ec;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  background-color: #4c5175;
+  color: #e1e8ec;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-.product__button:hover{
-    background-color: black;
-    color: #bce7d9;
+.product__button:hover {
+  background-color: black;
+  color: #bce7d9;
 }
 
-.product_image{
-    height: 10rem;
-    width: 15rem;
+.prodImg__container {
+  overflow: hidden;
+}
+
+.product_image {
+  height: 10rem;
+  width: 15rem;
+  transition: all 0.4s ease-in-out;
+  filter: brightness(100%);
+}
+
+.product_image:hover {
+  transform: scale(1.3);
 }

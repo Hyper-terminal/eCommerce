@@ -10,22 +10,24 @@ import Cart from "./components/Cart/Cart";
 
 const App = () => {
     return (
-        <CartProvider>
-            <Header />
-            <Route path="/shopping_cart">
-                <Cart />
-            </Route>
-            <Route path="/home">
-                <Home />
-            </Route>
-            <Route path="/store">
-                <Store />
-            </Route>
-            <Route path="/about">
-                <About />
-            </Route>{" "}
-            <Footer />
-        </CartProvider>
+        <>
+            <CartProvider>
+                <Header />
+                <Route path="/shopping_cart">
+                    <Cart />
+                </Route>
+                <Route path="/home">
+                    <Home />
+                </Route>
+                <Route path="/store">
+                    <Store />
+                </Route>
+                <Route path="/about">
+                    <About />
+                </Route>{" "}
+                <Footer />
+            </CartProvider>
+        </>
     );
 };
 

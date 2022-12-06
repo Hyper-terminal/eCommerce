@@ -4,6 +4,7 @@ import classes from "./Header.module.css";
 import cartIcon from "../../../assets/icons/cart.svg";
 import logo from "../../../assets/logo/png/logo-no-background.png";
 import CartContext from "../../../store/cart-context";
+import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
     const cartCtx = useContext(CartContext);
@@ -31,9 +32,15 @@ const Header = (props) => {
                     />
                 </div>
                 <Nav className="ms-5">
-                    <Nav.Link className={classes.header__link}>Home</Nav.Link>
-                    <Nav.Link className={classes.header__link}>Store</Nav.Link>
-                    <Nav.Link className={classes.header__link}>About</Nav.Link>
+                    <NavLink to="/home" className={classes.header__link}>
+                        Home
+                    </NavLink>
+                    <NavLink to="/store" className={classes.header__link}>
+                        Store
+                    </NavLink>
+                    <NavLink to="/about" className={classes.header__link}>
+                        About
+                    </NavLink>
                 </Nav>
                 <div
                     style={{ height: "2rem" }}

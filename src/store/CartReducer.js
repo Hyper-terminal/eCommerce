@@ -40,6 +40,7 @@ const CartReducer = (state, action) => {
         return updatedState;
     }
 
+    
     return {
         items: [],
         cartTotalAmount: 0,

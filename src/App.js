@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Footer from "./components/Layout/Footer/Footer";
 import Header from "./components/Layout/Header/Header";
 import CartProvider from "./store/CartProvider";
@@ -9,31 +9,21 @@ import Store from "./pages/Store/Store";
 import Cart from "./components/Cart/Cart";
 
 const App = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const cartToggleHandler = () => {
-        setIsOpen((prev) => !prev);
-    };
-
     return (
         <CartProvider>
-            <Header onCartToggle={cartToggleHandler} />
-
-            {isOpen && <Cart />}
-            {!isOpen && (
-                <>
-                    <Route path="/home">
-                        <Home />
-                    </Route>
-                    <Route path="/store">
-                        <Store cartIsOpen={isOpen} />
-                    </Route>
-                    <Route path="/about">
-                        <About />
-                    </Route>{" "}
-                </>
-            )}
-
+            <Header />
+            <Route path="/shopping_cart">
+                <Cart />
+            </Route>
+            <Route path="/home">
+                <Home />
+            </Route>
+            <Route path="/store">
+                <Store />
+            </Route>
+            <Route path="/about">
+                <About />
+            </Route>{" "}
             <Footer />
         </CartProvider>
     );

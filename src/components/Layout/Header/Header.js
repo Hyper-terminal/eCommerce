@@ -6,15 +6,11 @@ import logo from "../../../assets/logo/png/logo-no-background.png";
 import CartContext from "../../../store/cart-context";
 import { NavLink } from "react-router-dom";
 
-const Header = (props) => {
+const Header = () => {
     const cartCtx = useContext(CartContext);
 
     let totalCartItem = 0;
     cartCtx.items.forEach((item) => (totalCartItem += item.quantity));
-
-    const cartHandler = () => {
-        props.onCartToggle();
-    };
 
     return (
         <header>
@@ -42,9 +38,9 @@ const Header = (props) => {
                         About
                     </NavLink>
                 </Nav>
-                <div
+                <NavLink
+                    to="/shopping_cart"
                     style={{ height: "2rem" }}
-                    onClick={cartHandler}
                     className={`d-flex ${classes.cartIcon}`}
                 >
                     <img
@@ -53,7 +49,7 @@ const Header = (props) => {
                         alt="shopping cart"
                     />
                     <h4 className="ms-2 text-primary">{totalCartItem}</h4>
-                </div>
+                </NavLink>
             </Navbar>
         </header>
     );

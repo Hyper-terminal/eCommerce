@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
 import CartContext from "../../store/cart-context";
-import classes from "./ProductItem.module.css";
+import classes from "./SingleProduct.module.css";
 
-const ProductItem = (props) => {
+const SingleProduct = (props) => {
     const cartCtx = useContext(CartContext);
 
     const addToCartHandler = () => {
@@ -41,4 +41,4 @@ const ProductItem = (props) => {
     );
 };
 
-export default ProductItem;
+export default SingleProduct;

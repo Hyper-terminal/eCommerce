@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import ProductItem from "./ProductItem";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import { Button } from "react-bootstrap";
-import Loader from "../UI/Loader";
+import Loader from "../UI/Loader/Loader";
+import ProductList from "./ProductList";
+import classes from "./Products.module.css";
 
 const productsArr = [
     {
@@ -45,46 +44,53 @@ const productsArr = [
 
 const Products = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [timeToken, setTimeToken] = useState(null);
 
-    const fetchMoviesHandler = async () => {
-        setIsLoading(true);
-        await fetch("https://swapi.dev/api/films");
+    async function fetchMoviesHandler() {
+        try {
+            setIsLoading(true);
 
-        setIsLoading(false);
-    };
+            if (timeToken !== null) return;
+
+            const response = await fetch("https://swapi.dev/api/film");
+            const data = await response.json();
+
+            setIsLoading(false);
+        } catch (error) {
+            console.log("Something went wrong ....Retrying");
+
+            const timeId = setTimeout(() => {
+                fetchMoviesHandler();
+            }, 3000);
+
+            setTimeToken(timeId);
+        }
+    }
 
     const spinnerHandler = () => {
         setIsLoading(false);
     };
 
+    const cancelFetchHandler = () => {
+        clearTimeout(timeToken);
+    };
+
     return (
         <>
             {isLoading && (
-                <div onClick={spinnerHandler}>
-                    <Loader />
+                <div className={classes.overlay}>
+                    <div onClick={spinnerHandler}>
+                        <Loader message="loading..." />
+                        <Button onClick={cancelFetchHandler} variant="danger">
+                            Cancel fetch request
+                        </Button>
+                    </div>
                 </div>
             )}
+
             <Button onClick={fetchMoviesHandler}>Fetch Movies</Button>
-            <h3
-                style={{ fontFamily: "Metal Mania" }}
-                className="text-center fw-bold fs-1 mt-4 mb-4"
-            >
-                Music
-            </h3>
-            <div className="d-flex justify-content-center w-75 m-auto">
-                <Row sm={1} md={2} lg={3}>
-                    {productsArr.map((item) => (
-                        <Col key={item.id} className="mb-2 ">
-                            <ProductItem
-                                title={item.title}
-                                price={item.price}
-                                imageUrl={item.imageUrl}
-                                id={item.id}
-                            />
-                        </Col>
-                    ))}
-                </Row>
-            </div>
+
+            <ProductList title="Music" products={productsArr} />
         </>
     );
 };

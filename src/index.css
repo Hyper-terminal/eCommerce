@@ -16,6 +16,11 @@ html {
     width: 100vw;
 }
 
+body{
+    max-height: 100%;
+    max-width: 100%;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;

@@ -49,6 +49,14 @@ const Header = () => {
                     >
                         About
                     </NavLink>
+
+                    <NavLink
+                        activeClassName={classes.header__link_active}
+                        to="/contact"
+                        className={classes.header__link}
+                    >
+                        Contact
+                    </NavLink>
                 </Nav>
                 <NavLink
                     activeClassName={classes.header__link_active}

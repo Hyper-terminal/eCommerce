@@ -1,12 +1,11 @@
 import React from "react";
-
+import classes from "./UICard.module.css";
 const UICard = (props) => {
     let myClassName = props.className + "";
 
     return (
         <div
-            style={{ backgroundColor: "#e1e8ec" }}
-            className={`${myClassName} rounded border shadow w-75 p-3`}
+            className={`${myClassName} ${classes.container} rounded border shadow p-3`}
         >
             {props.children}
         </div>

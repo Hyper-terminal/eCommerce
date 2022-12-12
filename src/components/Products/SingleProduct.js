@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import CartContext from "../../store/cart-context";
 import classes from "./SingleProduct.module.css";
 
@@ -21,12 +22,14 @@ const SingleProduct = (props) => {
                 >
                     {props.title}{" "}
                 </h3>
-                <div className={classes.prodImg__container}>
-                    <Card.Img
-                        className={`hover-zoom ${classes.product_image}`}
-                        src={props.imageUrl}
-                    />
-                </div>
+                <NavLink to={`/store/${props.id}`}>
+                    <div className={classes.prodImg__container}>
+                        <Card.Img
+                            className={`hover-zoom ${classes.product_image}`}
+                            src={props.imageUrl}
+                        />
+                    </div>
+                </NavLink>
                 <Card.Text className="d-inline-block ms-3 fs-5 fw-bold">
                     ${props.price}
                 </Card.Text>

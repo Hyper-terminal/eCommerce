@@ -2,33 +2,41 @@ import React from "react";
 import Footer from "./components/Layout/Footer/Footer";
 import Header from "./components/Layout/Header/Header";
 import CartProvider from "./store/CartProvider";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import About from "./pages/About/About";
 import Home from "./pages/Home/Home";
 import Store from "./pages/Store/Store";
 import Cart from "./components/Cart/Cart";
 import Contact from "./pages/Contact/Contact";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const App = () => {
     return (
         <>
             <CartProvider>
                 <Header />
-                <Route path="/shopping_cart">
-                    <Cart />
-                </Route>
-                <Route path="/home">
-                    <Home />
-                </Route>
-                <Route path="/store">
-                    <Store />
-                </Route>
-                <Route path="/about">
-                    <About />
-                </Route>
-                <Route path="/contact">
-                    <Contact />
-                </Route>
+                <Switch>
+                    <Route path="/shopping_cart">
+                        <Cart />
+                    </Route>
+                    <Route path="/home">
+                        <Home />
+                    </Route>
+
+                    <Route path="/store" exact>
+                        <Store />
+                    </Route>
+                    <Route path="/about">
+                        <About />
+                    </Route>
+                    <Route path="/contact">
+                        <Contact />
+                    </Route>
+
+                    <Route path="/store/:productID">
+                        <ProductDetails />
+                    </Route>
+                </Switch>
                 <Footer />
             </CartProvider>
         </>

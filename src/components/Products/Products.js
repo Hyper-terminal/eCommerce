@@ -1,48 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import CartContext from "../../store/cart-context";
 import Loader from "../UI/Loader/Loader";
 import ProductList from "./ProductList";
 import classes from "./Products.module.css";
 
-const productsArr = [
-    {
-        title: "Colors",
-        id: 1,
-        price: 100,
-
-        imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    },
-
-    {
-        title: "Black and white Colors",
-        id: 2,
-        price: 50,
-
-        imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    },
-
-    {
-        title: "Yellow and Black Colors",
-
-        price: 70,
-        id: 3,
-        imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    },
-
-    {
-        title: "Blue Color",
-        id: 4,
-        price: 100,
-
-        imageUrl:
-            "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-    },
-];
-
 const Products = () => {
     const [isLoading, setIsLoading] = useState(false);
+
+    const cartCtx = useContext(CartContext);
 
     const spinnerHandler = () => {
         setIsLoading(false);
@@ -58,7 +23,7 @@ const Products = () => {
                 </div>
             )}
 
-            <ProductList title="Music" products={productsArr} />
+            <ProductList title="Music" products={cartCtx.products} />
         </>
     );
 };

@@ -4,13 +4,21 @@ import classes from "./Header.module.css";
 import cartIcon from "../../../assets/icons/cart.svg";
 import logo from "../../../assets/logo/png/logo-no-background.png";
 import CartContext from "../../../store/cart-context";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import AuthContext from "../../../store/auth-context";
 
 const Header = () => {
     const cartCtx = useContext(CartContext);
+    const authCtx = useContext(AuthContext);
+    const history = useHistory();
 
     let totalCartItem = 0;
     cartCtx.items.forEach((item) => (totalCartItem += item.quantity));
+
+    const logoutHandler = () => {
+        authCtx.onLogout();
+        history.replace("/home");
+    };
 
     return (
         <header>
@@ -29,20 +37,27 @@ const Header = () => {
                 </div>
                 <Nav className="ms-5">
                     <NavLink
+                        exact
                         to="/home"
                         activeClassName={classes.header__link_active}
                         className={classes.header__link}
                     >
                         Home
                     </NavLink>
+
+                    {authCtx.isLoggedIn && (
+                        <NavLink
+                            exact
+                            activeClassName={classes.header__link_active}
+                            to="/store"
+                            className={classes.header__link}
+                        >
+                            Store
+                        </NavLink>
+                    )}
+
                     <NavLink
-                        activeClassName={classes.header__link_active}
-                        to="/store"
-                        className={classes.header__link}
-                    >
-                        Store
-                    </NavLink>
-                    <NavLink
+                        exact
                         activeClassName={classes.header__link_active}
                         to="/about"
                         className={classes.header__link}
@@ -50,27 +65,48 @@ const Header = () => {
                         About
                     </NavLink>
 
-                    <NavLink
-                        activeClassName={classes.header__link_active}
-                        to="/contact"
-                        className={classes.header__link}
-                    >
-                        Contact
-                    </NavLink>
+                    {authCtx.isLoggedIn && (
+                        <NavLink
+                            exact
+                            activeClassName={classes.header__link_active}
+                            to="/contact"
+                            className={classes.header__link}
+                        >
+                            Contact
+                        </NavLink>
+                    )}
                 </Nav>
-                <NavLink
-                    activeClassName={classes.header__link_active}
-                    to="/shopping_cart"
-                    style={{ height: "2rem" }}
-                    className={`d-flex ${classes.cartIcon}`}
-                >
-                    <img
-                        className="h-100 w-100"
-                        src={cartIcon}
-                        alt="shopping cart"
-                    />
-                    <h4 className="ms-2 text-primary">{totalCartItem}</h4>
-                </NavLink>
+
+                {!authCtx.isLoggedIn && (
+                    <NavLink to="/auth" className="me-5">
+                        Login
+                    </NavLink>
+                )}
+
+                {authCtx.isLoggedIn && (
+                    <div className="d-flex">
+                        <NavLink
+                            activeClassName={classes.header__link_active}
+                            to="/shopping_cart"
+                            style={{ height: "2rem" }}
+                            className={`d-flex ${classes.cartIcon}`}
+                        >
+                            <img
+                                className="h-100 w-100"
+                                src={cartIcon}
+                                alt="shopping cart"
+                            />
+                            <h4 className="ms-2 text-primary">
+                                {totalCartItem}
+                            </h4>
+                        </NavLink>
+                        <div className="me-5">
+                            <NavLink onClick={logoutHandler} to="/">
+                                Logout
+                            </NavLink>
+                        </div>
+                    </div>
+                )}
             </Navbar>
         </header>
     );

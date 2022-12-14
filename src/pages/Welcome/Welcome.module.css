@@ -1,0 +1,36 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.link {
+    position: absolute;
+    top: 7rem;
+    right: 16rem;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Metal Mania";
+    cursor: pointer;
+    padding: 1rem;
+    filter: drop-shadow(2px 4px 6px #191970);
+    background: transparent;
+    box-shadow:  inset 1px 1px 8px 1px lightblue;
+    border-radius: 15px;
+    transition: all 0.7s ease-in-out;
+}
+.link:hover{
+    box-shadow: inset 1px 1px 8px 1px blue;
+}
+
+.link p {
+    margin: 0;
+    padding: 0;
+}

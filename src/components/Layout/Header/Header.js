@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import classes from "./Header.module.css";
 import cartIcon from "../../../assets/icons/cart.svg";
@@ -8,6 +8,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";
 
 const Header = () => {
+
     const cartCtx = useContext(CartContext);
     const authCtx = useContext(AuthContext);
     const history = useHistory();

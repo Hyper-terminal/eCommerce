@@ -11,6 +11,8 @@ const AuthForm = () => {
     const authCtx = useContext(AuthContext);
     const history = useHistory();
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const [isLogin, setIsLogin] = useState(true);
     const [form, setForm] = useState({
         email: "",
@@ -23,7 +25,7 @@ const AuthForm = () => {
 
     const submitHandler = async (event) => {
         event.preventDefault();
-
+        setIsLoading(true);
         try {
             let url;
             if (isLogin) {
@@ -48,18 +50,19 @@ const AuthForm = () => {
                 }),
             });
 
+            setIsLoading(false);
             const data = await res.json();
 
             if (res.ok) {
                 //able to connect to server
                 authCtx.onLogin(data.idToken);
-                history.replace('/store')
+                history.replace("/store");
             } else {
                 // got error throw it to catch block
-                throw new Error(data.error);
+                throw new Error(data.error.message);
             }
         } catch (error) {
-            alert(error.message);
+            alert(error);
         }
     };
 
@@ -96,20 +99,29 @@ const AuthForm = () => {
                         placeholder="Enter password"
                     />
                 </Form.Group>
+                {isLoading && <p className="m-auto text-info">Loading...</p>}
 
-                <Button className="w-100" variant="success" type="submit">
-                    {isLogin ? "Login" : "Signup"}
-                </Button>
+                {!isLoading && (
+                    <>
+                        <Button
+                            className="w-100"
+                            variant="success"
+                            type="submit"
+                        >
+                            {isLogin ? "Login" : "Signup"}
+                        </Button>
 
-                <Button
-                    variant="outline-dark"
-                    className="w-100 border"
-                    onClick={switchAuthModeHandler}
-                >
-                    {isLogin
-                        ? "Create new account"
-                        : "Login with existing account"}
-                </Button>
+                        <Button
+                            variant="outline-dark"
+                            className="w-100 border"
+                            onClick={switchAuthModeHandler}
+                        >
+                            {isLogin
+                                ? "Create new account"
+                                : "Login with existing account"}
+                        </Button>
+                    </>
+                )}
             </Form>
         </UICard>
     );

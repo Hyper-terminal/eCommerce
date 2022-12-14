@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import classes from "./Header.module.css";
 import cartIcon from "../../../assets/icons/cart.svg";

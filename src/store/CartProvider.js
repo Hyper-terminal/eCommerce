@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import CartContext from "./cart-context";
 import CartReducer from "./CartReducer";
 
@@ -46,10 +46,28 @@ const CartProvider = (props) => {
         cartTotalAmount: 0,
     });
 
-    const addCartHandler = (item) => {
-        dispatchCart({ type: "ADD_PRODUCT", item: item });
-    };
+    let currUserEmail = localStorage.getItem("email");
+    const adjEmail = currUserEmail.replace("@", "").replace(".", "");
 
+    // make get request
+    useEffect(() => {
+        fetch(
+            `https://crudcrud.com/api/${process.env.REACT_APP_API_KEY}/cart${adjEmail}`
+        )
+            .then((res) => res.json())
+            .then((data) =>
+                dispatchCart({ type: "FETCH_PRODUCT", items: data })
+            )
+            .catch((err) => console.log(err));
+    }, [adjEmail]);
+
+    const addCartHandler = (item) => {
+        dispatchCart({
+            type: "ADD_PRODUCT",
+            item: item,
+            email: adjEmail,
+        });
+    };
     const removeCartHandler = (id) => {
         dispatchCart({ type: "REMOVE_PRODUCT", id: id });
     };

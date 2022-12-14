@@ -22,49 +22,48 @@ const App = () => {
                 <Route exact path="/">
                     <Welcome />
                 </Route>
-            </Switch>
 
-            <Header />
-            <Switch>
                 <Route exact path="/home">
-                    <Home />
+                    <Header />
+                    <Home /> <Footer />
                 </Route>
 
                 <Route path="/about" exact>
-                    <About />
+                    <Header />
+                    <About /> <Footer />
                 </Route>
 
                 <Route path="/contact" exact>
-                    <Contact />
+                    <Header /> <Contact /> <Footer />
                 </Route>
 
                 {authCtx.isLoggedIn && (
                     <>
                         <Route path="/shopping_cart" exact>
-                            <Cart />
+                            <Header /> <Cart /> <Footer />
                         </Route>
 
                         <Route path="/store" exact>
-                            <Store />
+                            <Header /> <Store /> <Footer />
                         </Route>
 
                         <Route path="/store/:productID" exact>
-                            <ProductDetails />
+                            <Header /> <ProductDetails /> <Footer />
                         </Route>
                     </>
                 )}
 
                 {!authCtx.isLoggedIn && (
                     <Route path="/auth" exact>
-                        <Auth />
+                        <Header /> <Auth /> <Footer />
                     </Route>
                 )}
 
                 <Route path="*">
-                    <h1> Page Not Found! Check Url please... </h1>
+                    <Header /> <h1> Page Not Found! Check Url please... </h1>{" "}
+                    <Footer />
                 </Route>
             </Switch>
-            <Footer />
         </CartProvider>
     );
 };

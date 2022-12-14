@@ -16,9 +16,10 @@ export const AuthProvider = (props) => {
         localStorage.removeItem("token");
     };
 
-    const loginHandler = (token) => {
-        setToken(token);
-        localStorage.setItem("token", token);
+    const loginHandler = (data) => {
+        setToken(data.idToken);
+        localStorage.setItem('email', data.email)
+        localStorage.setItem("token", data.idToken);
     };
 
     const isLoggedIn = !!token;

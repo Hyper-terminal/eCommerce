@@ -1,4 +1,18 @@
 const CartReducer = (state, action) => {
+    if (action.type === "FETCH_PRODUCT") {
+        const updatedState = { ...state };
+
+        const newItemsArr = action.items[action.items.length - 1];
+
+        // updating items
+        newItemsArr.items.forEach((prod) => updatedState.items.push(prod));
+
+        // updating cartTotalAmount
+        updatedState.cartTotalAmount = newItemsArr.cartTotalAmount;
+
+        return updatedState;
+    }
+
     if (action.type === "ADD_PRODUCT") {
         const updatedState = { ...state };
 
@@ -14,6 +28,25 @@ const CartReducer = (state, action) => {
 
         updatedState.cartTotalAmount +=
             action.item.quantity * action.item.price;
+
+        // add to backend
+
+        fetch(
+            `https://crudcrud.com/api/${process.env.REACT_APP_API_KEY}/cart${action.email}`,
+            {
+                method: "Post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    items: updatedState.items,
+                    cartTotalAmount: updatedState.cartTotalAmount,
+                }),
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((err) => console.log(err));
 
         return updatedState;
     }
@@ -40,7 +73,6 @@ const CartReducer = (state, action) => {
         return updatedState;
     }
 
-    
     return {
         items: [],
         cartTotalAmount: 0,

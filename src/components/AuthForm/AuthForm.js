@@ -55,7 +55,7 @@ const AuthForm = () => {
 
             if (res.ok) {
                 //able to connect to server
-                authCtx.onLogin(data.idToken);
+                authCtx.onLogin(data);
                 history.replace("/store");
             } else {
                 // got error throw it to catch block

@@ -14,11 +14,12 @@ export const AuthProvider = (props) => {
     const logoutHandler = () => {
         setToken(null);
         localStorage.removeItem("token");
+        localStorage.removeItem("email");
     };
 
     const loginHandler = (data) => {
         setToken(data.idToken);
-        localStorage.setItem('email', data.email)
+        localStorage.setItem("email", data.email);
         localStorage.setItem("token", data.idToken);
     };
 

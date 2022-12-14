@@ -46,8 +46,15 @@ const CartProvider = (props) => {
         cartTotalAmount: 0,
     });
 
-    let currUserEmail = localStorage.getItem("email");
-    const adjEmail = currUserEmail.replace("@", "").replace(".", "");
+    if (!localStorage.getItem("token")) {
+        cart.items = [];
+        cart.cartTotalAmount = 0;
+    }
+
+    let intialEmail = localStorage.getItem("email")
+        ? localStorage.getItem("email")
+        : "";
+    const adjEmail = intialEmail.replace("@", "").replace(".", "");
 
     // make get request
     useEffect(() => {
@@ -69,7 +76,7 @@ const CartProvider = (props) => {
         });
     };
     const removeCartHandler = (id) => {
-        dispatchCart({ type: "REMOVE_PRODUCT", id: id });
+        dispatchCart({ type: "REMOVE_PRODUCT", id: id, email: adjEmail });
     };
 
     return (

@@ -2,6 +2,8 @@ const CartReducer = (state, action) => {
     if (action.type === "FETCH_PRODUCT") {
         const updatedState = { ...state };
 
+        if (action.items.length === 0) return state;
+
         const newItemsArr = action.items[action.items.length - 1];
 
         // updating items
@@ -38,10 +40,7 @@ const CartReducer = (state, action) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    items: updatedState.items,
-                    cartTotalAmount: updatedState.cartTotalAmount,
-                }),
+                body: JSON.stringify(updatedState),
             }
         )
             .then((res) => res.json())
@@ -69,6 +68,8 @@ const CartReducer = (state, action) => {
                 (item) => item.id !== action.id
             );
         }
+
+        //remove from backend
 
         return updatedState;
     }

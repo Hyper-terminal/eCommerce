@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Button, Container } from "react-bootstrap";
+import {  Container } from "react-bootstrap";
 import classes from "./AuthForm.module.css";
 import AuthContext from "../../store/auth-context";
 import { useHistory } from "react-router-dom";
@@ -94,6 +94,7 @@ const AuthForm = () => {
                                 <input
                                     value={form.email}
                                     type="email"
+                                    name="email"
                                     className="text-md-left mb-4 mt-2 p-2 border border-secondary  opacity-75 w-100 d-block"
                                     placeholder="Enter email"
                                     onChange={inputHandler}
@@ -106,6 +107,7 @@ const AuthForm = () => {
                                 <input
                                     onChange={inputHandler}
                                     value={form.password}
+                                    name="password"
                                     type="password"
                                     className="text-md-left mb-4 p-2 mt-2 border border-secondary  opacity-75 w-100 d-block"
                                     placeholder="Enter your phone number"

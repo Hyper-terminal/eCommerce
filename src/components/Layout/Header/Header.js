@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import logo from "../../../assets/logo-no-background.png";
 import CartContext from "../../../store/cart-context";
-import { NavLink, Redirect, useHistory, Link } from "react-router-dom";
+import { NavLink, useHistory, Link } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";
 import classes from "./Header.module.css";
 

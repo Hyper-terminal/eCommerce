@@ -23,7 +23,7 @@ const Products = () => {
                 </div>
             )}
 
-            <ProductList title="Music" products={cartCtx.products} />
+            <ProductList products={cartCtx.products} />
         </>
     );
 };

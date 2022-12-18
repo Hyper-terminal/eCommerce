@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
-import UICard from "../UI/Card/UICard";
-import { Form, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import classes from "./ContactForm.module.css";
 
 function ContactForm() {
@@ -37,43 +36,56 @@ function ContactForm() {
     };
 
     return (
-        <UICard className={classes.container}>
-            <Form onSubmit={submitHandler}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control
-                        ref={nameRef}
-                        type="text"
-                        placeholder="Enter name"
-                    />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        ref={emailRef}
-                        type="email"
-                        placeholder="Enter email"
-                    />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Phone</Form.Label>
-                    <Form.Control
-                        ref={phoneRef}
-                        type="tel"
-                        placeholder="Phone number"
-                    />
-                </Form.Group>
-
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-        </UICard>
+        <section className={classes.container}>
+            <Container className="text-center mt-5 mb-4">
+                <h1>Get in touch</h1>
+                <div className="opacity-75">Hey there, fill out this form</div>
+            </Container>
+            <Container>
+                <div>
+                    <form
+                        onSubmit={submitHandler}
+                        className="d-flex w-75 me-auto ms-auto flex-column text-md-left"
+                    >
+                        <div className="d-flex  flex-column">
+                            <div className="w-100">
+                                <label className="d-block text-uppercase">
+                                    Name
+                                </label>
+                                <input
+                                    ref={nameRef}
+                                    type="text"
+                                    className="text-md-left mb-4 p-2 border border-secondary rounded opacity-75 w-100 d-block"
+                                    placeholder="Enter your name"
+                                />
+                            </div>
+                            <div className="md-w-100">
+                                <label className="d-block text-uppercase">
+                                    Email
+                                </label>
+                                <input
+                                    ref={emailRef}
+                                    type="email"
+                                    className="text-md-left mb-4 p-2 border border-secondary rounded opacity-75 w-100 d-block"
+                                    placeholder="Enter your name"
+                                />
+                            </div>{" "}
+                            <div className="md-w-100">
+                                <label className="d-block text-uppercase">
+                                    Phone
+                                </label>
+                                <input
+                                    ref={phoneRef}
+                                    type="tel"
+                                    className="text-md-left mb-4 p-2 border border-secondary rounded opacity-75 w-100 d-block"
+                                    placeholder="Enter your phone number"
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </Container>
+        </section>
     );
 }
 

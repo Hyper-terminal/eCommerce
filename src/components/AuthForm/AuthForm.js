@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import React, {useContext, useState} from "react";
+import {Button, Form} from "react-bootstrap";
 import classes from "./AuthForm.module.css";
 import UICard from "../UI/Card/UICard";
 import AuthContext from "../../store/auth-context";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-const api_key = process.env.REACT_APP_SECRET_KEY;
+const api_key = "AIzaSyAKMDAlGoaseXsGR4vQVTOTn-R2DU4qz6o";
 
 const AuthForm = () => {
     const authCtx = useContext(AuthContext);

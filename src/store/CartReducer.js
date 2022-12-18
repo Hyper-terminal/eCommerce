@@ -34,7 +34,7 @@ const CartReducer = (state, action) => {
         // add to backend
 
         fetch(
-            `https://crudcrud.com/api/${process.env.REACT_APP_API_KEY}/cart${action.email}`,
+            `https://crudcrud.com/api/cf4f2946da65452cbebe585421dbeff9/cart${action.email}`,
             {
                 method: "Post",
                 headers: {

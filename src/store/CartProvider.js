@@ -59,7 +59,7 @@ const CartProvider = (props) => {
     // make get request
     useEffect(() => {
         fetch(
-            `https://crudcrud.com/api/${process.env.REACT_APP_API_KEY}/cart${adjEmail}`
+            `https://crudcrud.com/api/cf4f2946da65452cbebe585421dbeff9/cart${adjEmail}`
         )
             .then((res) => res.json())
             .then((data) =>

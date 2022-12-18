@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import classes from "./Header.module.css";
-import cartIcon from "../../../assets/icons/cart.svg";
+import { Nav, Navbar, Container, NavDropdown, Button } from "react-bootstrap";
 import logo from "../../../assets/logo/png/logo-no-background.png";
 import CartContext from "../../../store/cart-context";
 import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";
 
 const Header = () => {
-
     const cartCtx = useContext(CartContext);
     const authCtx = useContext(AuthContext);
     const history = useHistory();
@@ -18,96 +15,49 @@ const Header = () => {
 
     const logoutHandler = () => {
         authCtx.onLogout();
-        history.replace("/home");
+        history.replace("/auth");
     };
 
     return (
         <header>
-            <Navbar
-                expand="sm"
-                className={`${classes.header} h-100 shadow justify-content-between`}
-            >
-                <div>
-                    <img
-                        className="ms-5"
-                        height="50"
-                        width="70"
-                        src={logo}
-                        alt="brand name the generics"
-                    />
-                </div>
-                <Nav className="ms-5">
-                    <NavLink
-                        exact
-                        to="/home"
-                        activeClassName={classes.header__link_active}
-                        className={classes.header__link}
-                    >
-                        Home
-                    </NavLink>
-
-                    {authCtx.isLoggedIn && (
-                        <NavLink
-                            exact
-                            activeClassName={classes.header__link_active}
-                            to="/store"
-                            className={classes.header__link}
-                        >
-                            Store
-                        </NavLink>
-                    )}
-
-                    <NavLink
-                        exact
-                        activeClassName={classes.header__link_active}
-                        to="/about"
-                        className={classes.header__link}
-                    >
-                        About
-                    </NavLink>
-
-                    {authCtx.isLoggedIn && (
-                        <NavLink
-                            exact
-                            activeClassName={classes.header__link_active}
-                            to="/contact"
-                            className={classes.header__link}
-                        >
-                            Contact
-                        </NavLink>
-                    )}
-                </Nav>
-
-                {!authCtx.isLoggedIn && (
-                    <NavLink to="/auth" className="me-5">
-                        Login
-                    </NavLink>
-                )}
-
-                {authCtx.isLoggedIn && (
-                    <div className="d-flex">
-                        <NavLink
-                            activeClassName={classes.header__link_active}
-                            to="/shopping_cart"
-                            style={{ height: "2rem" }}
-                            className={`d-flex ${classes.cartIcon}`}
-                        >
-                            <img
-                                className="h-100 w-100"
-                                src={cartIcon}
-                                alt="shopping cart"
-                            />
-                            <h4 className="ms-2 text-primary">
-                                {totalCartItem}
-                            </h4>
-                        </NavLink>
-                        <div className="me-5">
-                            <NavLink onClick={logoutHandler} to="/">
-                                Logout
-                            </NavLink>
-                        </div>
+            <Navbar bg="light" expand="lg">
+                <Container>
+                    <Navbar.Brand>
+                        <img src={logo} height="30" width="30" />
+                    </Navbar.Brand>
+                    <div className="ms-auto d-inline-flex justify-content-center align-items-center pt-1 pb-2 d-lg-none bg-dark text-white  ps-4 pe-4 d-inline-block ms-3">
+                        Cart {totalCartItem}
                     </div>
-                )}
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav>
+                            <Nav.Link>
+                                <NavLink to="/home">Home</NavLink>
+                            </Nav.Link>
+                            <Nav.Link>
+                                <NavLink to="/store">Store</NavLink>
+                            </Nav.Link>
+                            <Nav.Link>
+                                <NavLink to="/about">About</NavLink>
+                            </Nav.Link>
+                        </Nav>
+                        <hr className="d-lg-none" />
+                        <nav className="ms-auto">
+                            <Nav.Link
+                                className="d-md-none d-lg-inline-block"
+                                onClick={logoutHandler}
+                            >
+                                {authCtx.isLoggedIn ? "Logout" : "Login"}
+                            </Nav.Link>
+                            <div className="d-md-none d-sm-none d-lg-inline-block d-inline-flex justify-content-center align-items-center pt-1 pb-2  bg-dark text-white  ps-4 pe-4 d-inline-block ms-3">
+                                Cart {totalCartItem}
+                            </div>
+                        </nav>
+                        <Nav.Link className="d-lg-none" onClick={logoutHandler}>
+                            {authCtx.isLoggedIn ? "Logout" : "Login"}
+                        </Nav.Link>
+                    </Navbar.Collapse>
+                </Container>
             </Navbar>
         </header>
     );

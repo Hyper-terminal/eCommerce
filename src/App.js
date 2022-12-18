@@ -1,69 +1,76 @@
-import React, { useContext } from "react";
-import Footer from "./components/Layout/Footer/Footer";
-import Header from "./components/Layout/Header/Header";
+import React, { Suspense, useContext } from "react";
 import CartProvider from "./store/CartProvider";
-import { Route, Switch } from "react-router-dom";
-import About from "./pages/About/About";
-import Home from "./pages/Home/Home";
-import Store from "./pages/Store/Store";
-import Cart from "./components/Cart/Cart";
-import Contact from "./pages/Contact/Contact";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
-import Auth from "./pages/Auth/Auth";
+import { Redirect, Route, Switch } from "react-router-dom";
 import AuthContext from "./store/auth-context";
-import Welcome from "./pages/Welcome/Welcome";
+import LoadingSpinner from "./components/UI/LoadingSpinner/LoadingSpinner";
+import Header from "./components/Layout/Header/Header";
+import Footer from "./components/Layout/Footer/Footer";
+
+const About = React.lazy(() => import("./pages/About/About"));
+const Home = React.lazy(() => import("./pages/Home/Home"));
+const Store = React.lazy(() => import("./pages/Store/Store"));
+const Cart = React.lazy(() => import("./components/Cart/Cart"));
+const Contact = React.lazy(() => import("./pages/Contact/Contact"));
+const ProductDetails = React.lazy(() =>
+    import("./pages/ProductDetails/ProductDetails")
+);
+const Auth = React.lazy(() => import("./pages/Auth/Auth"));
 
 const App = () => {
     const authCtx = useContext(AuthContext);
 
     return (
         <CartProvider>
-            <Switch>
-                <Route exact path="/">
-                    <Welcome />
-                </Route>
-
-                <Route exact path="/home">
-                    <Header />
-                    <Home /> <Footer />
-                </Route>
-
-                <Route path="/about" exact>
-                    <Header />
-                    <About /> <Footer />
-                </Route>
-
-                <Route path="/contact" exact>
-                    <Header /> <Contact /> <Footer />
-                </Route>
-
-                {authCtx.isLoggedIn && (
-                    <>
-                        <Route path="/shopping_cart" exact>
-                            <Header /> <Cart /> <Footer />
-                        </Route>
-
-                        <Route path="/store" exact>
-                            <Header /> <Store /> <Footer />
-                        </Route>
-
-                        <Route path="/store/:productID" exact>
-                            <Header /> <ProductDetails /> <Footer />
-                        </Route>
-                    </>
-                )}
-
-                {!authCtx.isLoggedIn && (
-                    <Route path="/auth" exact>
-                        <Header /> <Auth /> <Footer />
+            <Suspense fallback={<LoadingSpinner />}>
+                <Switch>
+                    <Route exact path="/">
+                        <Redirect to="/home" />
                     </Route>
-                )}
 
-                <Route path="*">
-                    <Header /> <h1> Page Not Found! Check Url please... </h1>{" "}
-                    <Footer />
-                </Route>
-            </Switch>
+                    <Route exact path="/home">
+                        <Header />
+                        <Home />
+                        <Footer />
+                    </Route>
+
+                    <Route path="/about" exact>
+                        <Header />
+                        <About /> <Footer />
+                    </Route>
+
+                    {authCtx.isLoggedIn && (
+                        <>
+                            <Route path="/contact" exact>
+                                <Header /> <Contact /> <Footer />
+                            </Route>
+
+                            <Route path="/shopping_cart" exact>
+                                <Header /> <Cart /> <Footer />
+                            </Route>
+
+                            <Route path="/store" exact>
+                                <Header /> <Store /> <Footer />
+                            </Route>
+
+                            <Route path="/store/:productID" exact>
+                                <Header /> <ProductDetails /> <Footer />
+                            </Route>
+                        </>
+                    )}
+
+                    {!authCtx.isLoggedIn && (
+                        <Route path="/auth" exact>
+                            <Header /> <Auth /> <Footer />
+                        </Route>
+                    )}
+
+                    <Route path="*">
+                        <Header />{" "}
+                        <h1> Page Not Found! Check Url please... </h1>{" "}
+                        <Footer />
+                    </Route>
+                </Switch>
+            </Suspense>
         </CartProvider>
     );
 };

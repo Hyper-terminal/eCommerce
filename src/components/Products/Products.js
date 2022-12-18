@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import CartContext from "../../store/cart-context";
-import Loader from "../UI/Loader/Loader";
+import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 import ProductList from "./ProductList";
 import classes from "./Products.module.css";
 
@@ -18,7 +18,7 @@ const Products = () => {
             {isLoading && (
                 <div className={classes.overlay}>
                     <div onClick={spinnerHandler}>
-                        <Loader message="loading..." />
+                        <LoadingSpinner />
                     </div>
                 </div>
             )}

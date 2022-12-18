@@ -3,7 +3,6 @@ import classes from "./Home.module.css";
 import { NavLink } from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import FeaturedProducts from "./FeaturedProducts";
-import Test from "../../Test";
 
 const Home = () => {
     return (

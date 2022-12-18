@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1305px" height="833px" viewBox="0 0 1305 833" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>Placeholder 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="-2.22044605e-14%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#E2E2E2" offset="0%"></stop>
+            <stop stop-color="#E6E6E6" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="1305" height="833"></rect>
+        <linearGradient x1="-2.22044605e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#DCDCDC" offset="0%"></stop>
+            <stop stop-color="#E3E0E0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-2.22044605e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-5">
+            <stop stop-color="#DCDCDC" offset="0%"></stop>
+            <stop stop-color="#E3E0E0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-2.22044605e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-6">
+            <stop stop-color="#D9D9D9" offset="0%"></stop>
+            <stop stop-color="#D9D9D9" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-2.22044605e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-7">
+            <stop stop-color="#EBEBEB" offset="0%"></stop>
+            <stop stop-color="#DDDDDD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-2.22044605e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-8">
+            <stop stop-color="#E7E7E7" offset="0%"></stop>
+            <stop stop-color="#DDDDDD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-2.22044605e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-9">
+            <stop stop-color="#E7E7E7" offset="0%"></stop>
+            <stop stop-color="#DDDDDD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Wireframes-+-Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Placeholder-1" transform="translate(0.000000, -835.000000)">
+            <g transform="translate(0.000000, 835.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Rectangle-Copy-33" fill="url(#linearGradient-1)" opacity="0.5" xlink:href="#path-2"></use>
+                <ellipse id="Oval" fill="url(#linearGradient-4)" opacity="0.200000003" mask="url(#mask-3)" cx="429.75" cy="216.12973" rx="146.25" ry="146.337838"></ellipse>
+                <ellipse id="Oval" fill="url(#linearGradient-5)" opacity="0.698084113" mask="url(#mask-3)" cx="429.75" cy="216.12973" rx="90" ry="90.0540541"></ellipse>
+                <path d="M-44.721811,833 C282.456218,833 461.30879,389.483784 800.806265,389.483784 C1140.30374,389.483784 1353.26387,833 1650.7802,833 C1948.29653,833 -251.793721,833 -44.721811,833 Z" id="Path-22-Copy" fill="url(#linearGradient-6)" opacity="0.698084113" mask="url(#mask-3)"></path>
+                <path d="M-635.274807,837.502703 C-333.101317,837.502703 -167.91753,448.018919 145.633895,448.018919 C459.18532,448.018919 655.87,837.502703 930.648684,837.502703 C1205.42737,837.502703 -826.521273,837.502703 -635.274807,837.502703 Z" id="Path-22" fill="url(#linearGradient-7)" mask="url(#mask-3)"></path>
+                <path d="M493.957482,833 C789.773886,833 951.482558,443.516216 1258.43753,443.516216 C1565.3925,443.516216 1757.93935,833 2026.93728,833 C2295.93521,833 306.734434,833 493.957482,833 Z" id="Path-22-Copy" fill="url(#linearGradient-8)" mask="url(#mask-3)"></path>
+                <path d="M-638.291017,934.310811 C-407.740696,934.310811 -281.709869,583.1 -42.4784866,583.1 C196.752895,583.1 346.818065,934.310811 556.466878,934.310811 C766.115692,934.310811 -784.206974,934.310811 -638.291017,934.310811 Z" id="Path-22-Copy" fill="url(#linearGradient-9)" mask="url(#mask-3)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

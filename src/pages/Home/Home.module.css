@@ -1,0 +1,74 @@
+.home {
+    margin: 0 30px;
+}
+
+.container {
+    display: flex;
+    height: 38rem;
+    align-items: center;
+    background-color: white;
+    background-image: url("../../assets/background1.svg");
+    background-size: cover;
+    color: white;
+    width: auto;
+
+    justify-content: center;
+}
+
+.homeButton {
+    padding: 16px 35px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #202020;
+    background-color: white;
+    font-size: 14px;
+    line-height: 26px;
+    display: inline-block;
+    max-width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.homeButton:hover {
+    background-color: wheat;
+    color: black;
+}
+
+.contentContainer {
+    width: 100%;
+    margin: auto;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
+.mainHeading {
+    margin-bottom: 1rem;
+    color: #1a1b1f;
+    padding: 2rem;
+}
+
+.mainHeading h1 {
+    margin-top: 1.3rem;
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+.mainHeading div {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+@media only screen and (max-width: 765px) {
+    .mainHeading {
+        text-align: center;
+    }
+}
+
+.divider {
+    background-color: gray;
+    height: 2px;
+    opacity: 0.4;
+}
+

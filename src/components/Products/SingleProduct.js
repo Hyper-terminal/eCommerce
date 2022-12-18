@@ -1,46 +1,25 @@
-import React, { useContext } from "react";
-import { Card } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import CartContext from "../../store/cart-context";
+import React from "react";
+import { Link } from "react-router-dom";
 import classes from "./SingleProduct.module.css";
 
 const SingleProduct = (props) => {
-    const cartCtx = useContext(CartContext);
-
-    const addToCartHandler = () => {
-        cartCtx.onAddToCart({ ...props, quantity: 1 });
-    };
-
     return (
-        <Card
-            className="ms-2 me-2 h-100 shadow-lg  border-0"
-            style={{ width: "18rem" }}
-        >
-            <Card.Body className={classes.product__body}>
-                <h3
-                    className={`${classes.product__title} text-center fw-bold fs-5 mb-4`}
-                >
-                    {props.title}{" "}
-                </h3>
-                <NavLink to={`/store/${props.id}`}>
-                    <div className={classes.prodImg__container}>
-                        <Card.Img
-                            className={`hover-zoom ${classes.product_image}`}
-                            src={props.imageUrl}
-                        />
+        <div className={`${classes.container} relative w-100 mr-4 ml-4 mb-4`}>
+            <Link
+                to="/home"
+                className={classes.link}
+                style={{
+                    backgroundImage: `url(${props.imageUrl})`,
+                }}
+            >
+                <div className={classes.productDetails}>
+                    <div className={classes.productName}>{props.title}</div>
+                    <div className={classes.productPrice}>
+                        $&nbsp;{props.price}&nbsp;INR
                     </div>
-                </NavLink>
-                <Card.Text className="d-inline-block ms-3 fs-5 fw-bold">
-                    ${props.price}
-                </Card.Text>
-                <Card.Link
-                    onClick={addToCartHandler}
-                    className={`${classes.product__button} rounded p-2 fw-bold d-inline-block mt-4 ms-5`}
-                >
-                    ADD TO CART
-                </Card.Link>
-            </Card.Body>
-        </Card>
+                </div>
+            </Link>
+        </div>
     );
 };
 

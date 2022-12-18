@@ -37,13 +37,11 @@ const App = () => {
                         <Header />
                         <About /> <Footer />
                     </Route>
-
+                    <Route path="/contact" exact>
+                        <Header /> <Contact /> <Footer />
+                    </Route>
                     {authCtx.isLoggedIn && (
                         <>
-                            <Route path="/contact" exact>
-                                <Header /> <Contact /> <Footer />
-                            </Route>
-
                             <Route path="/shopping_cart" exact>
                                 <Header /> <Cart /> <Footer />
                             </Route>

@@ -1,6 +1,5 @@
 import React from "react";
-import UICard from "../UI/Card/UICard";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import SingleProduct from "./SingleProduct";
 
 const ProductList = (props) => {
@@ -12,12 +11,14 @@ const ProductList = (props) => {
             >
                 {props.title}
             </h3>
-            <UICard className="text-center m-auto">
-                <Row sm={1} md={2} lg={3}>
-                    {props.products.map((item) => (
+            <Container>
+                <Row>
+                    {props.products.map((item, index) => (
                         <Col
+                            lg={4}
+                            md={12}
                             key={item.id}
-                            className="mb-2 d-flex justify-content-center"
+                            className="text-center"
                         >
                             <SingleProduct
                                 title={item.title}
@@ -28,7 +29,7 @@ const ProductList = (props) => {
                         </Col>
                     ))}
                 </Row>
-            </UICard>
+            </Container>
         </>
     );
 };

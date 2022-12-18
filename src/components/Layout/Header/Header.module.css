@@ -1,3 +1,18 @@
-.cart {
-    background-color: rgb(26, 27, 31);
+@media only screen and (max-width: 991px) {
+    .smallHide {
+        display: none;
+    }
+}
+
+.link {
+    text-decoration: none;
+    color: #43464d;
+    transition: all 0.3s ease-in-out;
+}
+
+.link:hover,
+.active {
+    font-weight: 400;
+    color: black;
+    text-decoration: underline;
 }

@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Home.module.css";
 import { NavLink } from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import FeaturedProducts from "./FeaturedProducts";
+import AuthContext from "../../store/auth-context";
 
 const Home = () => {
+    const authCtx = useContext(AuthContext);
+    const redirectUrl = authCtx.isLoggedIn ? "/store" : "/auth";
+
     return (
         <>
             <section className={classes.home}>
                 <div className={classes.container}>
-                    <NavLink className={classes.homeButton} to="/store">
+                    <NavLink className={classes.homeButton} to={redirectUrl}>
                         EXPLORE
                     </NavLink>
                 </div>

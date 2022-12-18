@@ -1,19 +1,18 @@
-import React, {useContext, useState} from "react";
-import {Button, Form} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Button, Container } from "react-bootstrap";
 import classes from "./AuthForm.module.css";
-import UICard from "../UI/Card/UICard";
 import AuthContext from "../../store/auth-context";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const api_key = "AIzaSyAKMDAlGoaseXsGR4vQVTOTn-R2DU4qz6o";
+const api_key = process.env.REACT_APP_FIREBASE_API;
 
 const AuthForm = () => {
     const authCtx = useContext(AuthContext);
     const history = useHistory();
 
     const [isLoading, setIsLoading] = useState(false);
-
     const [isLogin, setIsLogin] = useState(true);
+
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -76,54 +75,72 @@ const AuthForm = () => {
     };
 
     return (
-        <UICard className={classes.container}>
-            <Form onSubmit={submitHandler}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        name="email"
-                        value={form.email}
-                        type="email"
-                        placeholder="Enter email"
-                        onChange={inputHandler}
-                    />
-                </Form.Group>
+        <section className={classes.container}>
+            <Container className="text-center mt-5 mb-4">
+                <h1>{isLogin ? "Sign In" : "Sign Up"}</h1>
+                <div className="opacity-75">Hey there, fill out this form</div>
+            </Container>
+            <Container>
+                <div>
+                    <form
+                        onSubmit={submitHandler}
+                        className="d-flex shadow p-5 rounded w-75 me-auto ms-auto flex-column text-md-left"
+                    >
+                        <div className="d-flex  flex-column">
+                            <div className="w-100">
+                                <label className="d-block text-uppercase">
+                                    Email address
+                                </label>
+                                <input
+                                    value={form.email}
+                                    type="email"
+                                    className="text-md-left mb-4 mt-2 p-2 border border-secondary  opacity-75 w-100 d-block"
+                                    placeholder="Enter email"
+                                    onChange={inputHandler}
+                                />
+                            </div>
+                            <div className="w-md-100">
+                                <label className="d-block text-uppercase">
+                                    Password
+                                </label>
+                                <input
+                                    onChange={inputHandler}
+                                    value={form.password}
+                                    type="password"
+                                    className="text-md-left mb-4 p-2 mt-2 border border-secondary  opacity-75 w-100 d-block"
+                                    placeholder="Enter your phone number"
+                                />
+                            </div>
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        name="password"
-                        value={form.password}
-                        onChange={inputHandler}
-                        type="password"
-                        placeholder="Enter password"
-                    />
-                </Form.Group>
-                {isLoading && <p className="m-auto text-info">Loading...</p>}
+                            {isLoading && (
+                                <div className="text-center text-primary">
+                                    Please wait ! Loading...
+                                </div>
+                            )}
 
-                {!isLoading && (
-                    <>
-                        <Button
-                            className="w-100"
-                            variant="success"
-                            type="submit"
-                        >
-                            {isLogin ? "Login" : "Signup"}
-                        </Button>
-
-                        <Button
-                            variant="outline-dark"
-                            className="w-100 border"
-                            onClick={switchAuthModeHandler}
-                        >
-                            {isLogin
-                                ? "Create new account"
-                                : "Login with existing account"}
-                        </Button>
-                    </>
-                )}
-            </Form>
-        </UICard>
+                            {!isLoading && (
+                                <div>
+                                    <button
+                                        className={classes.submitButton}
+                                        type="submit"
+                                    >
+                                        {isLogin ? "Login" : "Signup"}
+                                    </button>
+                                    <div
+                                        className={classes.toggler}
+                                        onClick={switchAuthModeHandler}
+                                    >
+                                        {isLogin
+                                            ? "Create new account?"
+                                            : "Have an accounr? Login"}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </form>
+                </div>
+            </Container>
+        </section>
     );
 };
 

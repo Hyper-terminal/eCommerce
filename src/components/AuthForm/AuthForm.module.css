@@ -1,5 +1,35 @@
 .container {
-    margin: auto;
-    margin-top: 10vh;
-    width: 45%;
+    margin-bottom: 12rem;
+}
+
+.submitButton {
+    padding: 12px 25px;
+    border: none;
+    width: 100%;
+    border-radius: 0px;
+    background-color: #1a1b1f;
+    transition: background-color 400ms ease, opacity 400ms ease,
+        color 400ms ease;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.submitButton:hover {
+    background-color: #32343a;
+}
+
+.toggler {
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    color: #1a1b1f;
+    transition: all 0.3s ease-in-out;
+}
+
+.toggler:hover {
+    opacity: 0.8;
 }

@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Container } from "react-bootstrap";
 import classes from "./ContactForm.module.css";
 
 function ContactForm() {
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
     const nameRef = useRef("");
     const emailRef = useRef("");
     const phoneRef = useRef("");
@@ -28,6 +30,7 @@ function ContactForm() {
                 },
             }
         );
+        setIsSubmitted(true);
 
         // clear fields
         nameRef.current.value = "";
@@ -67,7 +70,7 @@ function ContactForm() {
                                     ref={emailRef}
                                     type="email"
                                     className="text-md-left mb-4 p-2 border border-secondary rounded opacity-75 w-100 d-block"
-                                    placeholder="Enter your name"
+                                    placeholder="Enter your email"
                                 />
                             </div>{" "}
                             <div className="md-w-100">
@@ -81,8 +84,20 @@ function ContactForm() {
                                     placeholder="Enter your phone number"
                                 />
                             </div>
+                            <button
+                                className={classes.submitButton}
+                                type="submit"
+                            >
+                                SUBMIT
+                            </button>
                         </div>
                     </form>
+
+                    {isSubmitted && (
+                        <div className="text-center mt-5">
+                            Thank you! Your submission has been received!
+                        </div>
+                    )}
                 </div>
             </Container>
         </section>

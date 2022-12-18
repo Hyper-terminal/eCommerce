@@ -6,7 +6,7 @@ const SingleProduct = (props) => {
     return (
         <div className={`${classes.container} relative w-100 mr-4 ml-4 mb-4`}>
             <Link
-                to="/home"
+                to={`/store/${props.id}`}
                 className={classes.link}
                 style={{
                     backgroundImage: `url(${props.imageUrl})`,

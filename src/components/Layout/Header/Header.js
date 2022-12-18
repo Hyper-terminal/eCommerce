@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import logo from "../../../assets/logo-no-background.png";
 import CartContext from "../../../store/cart-context";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, Redirect, useHistory, Link } from "react-router-dom";
 import AuthContext from "../../../store/auth-context";
 import classes from "./Header.module.css";
 
@@ -32,9 +32,12 @@ const Header = () => {
                         />
                     </Navbar.Brand>
                     {authCtx.isLoggedIn && (
-                        <div className="ms-auto me-2 d-lg-none d-sm-inline-flex justify-content-center align-items-center pt-1 pb-2 bg-dark text-white  ps-4 pe-4 ">
+                        <Link
+                            to="/shopping_cart"
+                            className="text-decoration-none ms-auto me-2 d-lg-none d-sm-inline-flex justify-content-center align-items-center pt-1 pb-2 bg-dark text-white  ps-4 pe-4 "
+                        >
                             Cart {totalCartItem}
-                        </div>
+                        </Link>
                     )}
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -89,9 +92,12 @@ const Header = () => {
                                 {authCtx.isLoggedIn ? "Logout" : "Login"}
                             </Nav.Link>
                             {authCtx.isLoggedIn && (
-                                <div className=" d-lg-inline-block  pt-1 pb-2  bg-dark text-white  ps-4 pe-4 ms-3">
+                                <Link
+                                    to="/shopping_cart"
+                                    className="text-decoration-none  d-lg-inline-block  pt-1 pb-2  bg-dark text-white  ps-4 pe-4 ms-3"
+                                >
                                     Cart {totalCartItem}
-                                </div>
+                                </Link>
                             )}
                         </nav>
                         <Nav.Link className="d-lg-none" onClick={logoutHandler}>

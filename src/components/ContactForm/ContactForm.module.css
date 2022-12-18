@@ -1,3 +1,23 @@
 .container {
-  margin-bottom: 12rem;
+    margin-bottom: 12rem;
+}
+
+
+.submitButton {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 0px;
+    background-color: #1a1b1f;
+    transition: background-color 400ms ease, opacity 400ms ease,
+        color 400ms ease;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.submitButton:hover {
+    background-color: #32343a;
 }

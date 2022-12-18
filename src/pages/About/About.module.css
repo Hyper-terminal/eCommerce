@@ -1,0 +1,36 @@
+.home {
+    margin: 0 30px;
+}
+
+.container {
+    display: flex;
+    height: 38rem;
+    align-items: center;
+    background-color: white;
+    background-image: url("../../assets/background.svg");
+    background-size: cover;
+    color: white;
+    width: auto;
+    flex-direction: column;
+    justify-content: center;
+}
+.aboutHeading {
+    font-size: 65px;
+    line-height: 80px;
+    display: block;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.aboutPara {
+    display: block;
+    text-align: center;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 991px) {
+    .aboutHeading {
+        font-size: 56px;
+        line-height: 70px;
+    }
+}

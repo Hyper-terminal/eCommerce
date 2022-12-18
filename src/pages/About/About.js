@@ -1,14 +1,20 @@
 import React from "react";
+import classes from "./About.module.css";
 
 const About = () => {
     return (
-        <div>
-            <h1>About page</h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid,
-            adipisci cumque recusandae suscipit harum et eveniet id ullam
-            voluptatibus ex laboriosam beatae quia blanditiis corrupti quibusdam
-            molestiae? Maiores, porro animi.
-        </div>
+        <>
+            <section className={classes.home}>
+                <div className={classes.container}>
+                    <div className={classes.aboutHeading}>
+                        About Us <br />
+                    </div>
+                    <div className={classes.aboutPara}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    </div>
+                </div>
+            </section>
+        </>
     );
 };
 
